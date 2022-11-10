@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="container">
+        <h1>IMC Calculador</h1>
+  
+        <!-- Option for providing height 
+            and weight to the user-->
+        <p>Altura (em metro)</p>
+  
+        <input type="number" id="height">
+  
+        <p>Peso (em kg)</p>
+  
+        <input type="number" id="weight">
+
+        <p>Sexo (h ou m)</p>
+  
+        <input type="text" id="sexo">
+  
+        <button id="btn">Calcular</button>
+  
+        <div id="result"></div>
+    </div>
+    <!-- <div>
+        <div class="input-row">
+            <label for="">Sexo</label>
+            <select>
+                <option value="">Masculino</option>
+                <option value="">Feminino</option>
+            </select>
+        </div>
+        <div class="input-row">
+            <label for="">Altura</label>
+            <input type="number" step="0.1">Sexo
+        </div>
+        <div class="input-row">
+            <label for="">Peso</label>
+            <input type="number"step="0.1">Peso
+        </div>
+
+        <button type="suIMCt">calcular</button>
+    </div> -->
+
+    <script>
+        window.onload = () => {
+    let button = document.querySelector("#btn");
+  
+    // Function for calculating IMC
+    button.addEventListener("click", calcularIMC);
+};
+  
+function calcularIMC() {
+  
+    /* Getting input from user into height variable.
+    Input is string so typecasting is necessary. */
+    let height = parseFloat(document
+            .querySelector("#height").value);
+  
+    /* Getting input from user into weight variable. 
+    Input is string so typecasting is necessary.*/
+    let weight = parseFloat(document
+            .querySelector("#weight").value);
+  
+    let result = document.querySelector("#result");
+
+    let sexo = document.querySelector("#sexo");
+
+    let IMC = (weight / ((height * height)));
+  
+    // Checking the user providing a proper
+    // value or not
+    if (height === "" || isNaN(height)) 
+        result.innerHTML = "Provide a valid Height!";
+  
+    else if (weight === "" || isNaN(weight)) 
+        result.innerHTML = "Provide a valid Weight!";
+  
+    // If both input is valid, calculate the IMC
+    else if (sexo === 'm'){        
+  
+        // Dividing as per the IMC conditions
+
+        if (IMC < 19.1) result.innerHTML =
+            `abaixo do peso : <span>${IMC}</span>`;
+  
+        else if (IMC < 25.8) 
+            result.innerHTML = 
+                `no peso normal : <span>${IMC}</span>`;
+
+        else if (IMC < 27.3) 
+            result.innerHTML = 
+                `marginalmente acima do peso : <span>${IMC}</span>`;
+
+        else if (IMC < 32.3) 
+            result.innerHTML = 
+                `acima do peso ideal : <span>${IMC}</span>`;
+  
+        else result.innerHTML =
+            `Obeso : <span>${IMC}</span>`;
+    } else {
+
+        if (IMC < 20.7) result.innerHTML =
+            `abaixo do peso : <span>${IMC}</span>`;
+  
+        else if (IMC < 26.4) 
+            result.innerHTML = 
+                `no peso normal : <span>${IMC}</span>`;
+
+        else if (IMC <27.8) 
+            result.innerHTML = 
+                `marginalmente acima do peso : <span>${IMC}</span>`;
+
+        else if (IMC < 31.1) 
+            result.innerHTML = 
+                `acima do peso ideal : <span>${IMC}</span>`;
+  
+        else result.innerHTML =
+            `Obeso : <span>${IMC}</span>`;
+    }
+}
+
+    </script>
+</body>
+</html>
